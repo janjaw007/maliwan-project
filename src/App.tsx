@@ -5,17 +5,21 @@ import Products from "./pages/Products/Products";
 import Projects from "./pages/Projects/Projects";
 import Contact from "./pages/Contact/Contact";
 import NotFound from "./pages/NotFound/NotFound";
+import NavbarApp from "./components/Navbar/NavbarApp";
 
 function App() {
   return (
-    <Routes>
-      <Route index element={<Home />} />
-      <Route path="about" element={<About />} />
-      <Route path="products" element={<Products />} />
-      <Route path="projects" element={<Projects />} />
-      <Route path="contact" element={<Contact />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <NavbarApp />
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="products" element={<Products />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
 
