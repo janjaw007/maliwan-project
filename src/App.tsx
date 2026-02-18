@@ -7,10 +7,6 @@ import Contact from "./pages/Contact/Contact";
 import NotFound from "./pages/NotFound/NotFound";
 import NavbarApp from "./components/Navbar/NavbarApp";
 
-function PageLayout({ children }: { children: React.ReactNode }) {
-  return <div className="pt-24 min-h-screen bg-gray-50">{children}</div>;
-}
-
 function App() {
   return (
     <div>
@@ -18,46 +14,11 @@ function App() {
       <main>
         <Routes>
           <Route index element={<Home />} />
-          <Route
-            path="about"
-            element={
-              <PageLayout>
-                <About />
-              </PageLayout>
-            }
-          />
-          <Route
-            path="products"
-            element={
-              <PageLayout>
-                <Products />
-              </PageLayout>
-            }
-          />
-          <Route
-            path="projects"
-            element={
-              <PageLayout>
-                <Projects />
-              </PageLayout>
-            }
-          />
-          <Route
-            path="contact"
-            element={
-              <PageLayout>
-                <Contact />
-              </PageLayout>
-            }
-          />
-          <Route
-            path="*"
-            element={
-              <PageLayout>
-                <NotFound />
-              </PageLayout>
-            }
-          />
+          <Route path="about" element={<About />} />
+          <Route path="products" element={<Products />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </div>
