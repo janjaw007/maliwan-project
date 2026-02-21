@@ -23,7 +23,11 @@ function NavbarApp() {
     return () => window.removeEventListener("resize", checkView);
   }, []);
 
-  return <nav>{isMobileView ? <MobileNavbar /> : <DesktopNavbar />}</nav>;
+  return (
+    <nav className="sticky top-0 left-0 h-12.5 bg-amber-300">
+      {isMobileView ? <MobileNavbar /> : <DesktopNavbar />}
+    </nav>
+  );
 }
 
 export default NavbarApp;
