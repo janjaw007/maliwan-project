@@ -76,16 +76,18 @@ interface OpenNavItemProps {
 
 function OpenNavItem({ to, label, setOpenNav }: OpenNavItemProps) {
   return (
-    <NavLink
-      className={({ isActive }) =>
-        isActive
-          ? "flex items-center h-10 rounded-lg w-full px-4  font-semibold font-mono capitalize bg-amber-700 text-white"
-          : "flex items-center h-10 rounded-lg w-full px-4  font-semibold font-mono capitalize hover:bg-amber-200 cursor-pointer"
-      }
-      onClick={() => setOpenNav(false)}
-      to={to}
-    >
-      <li>{label}</li>
-    </NavLink>
+    <li>
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "flex items-center h-10 rounded-lg w-full px-4  font-semibold font-mono capitalize bg-amber-700 text-white"
+            : "flex items-center h-10 rounded-lg w-full px-4  font-semibold font-mono capitalize hover:bg-amber-200 cursor-pointer"
+        }
+        onClick={() => setOpenNav(false)}
+        to={to}
+      >
+        {label}
+      </NavLink>
+    </li>
   );
 }
