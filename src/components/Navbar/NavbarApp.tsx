@@ -24,7 +24,7 @@ function NavbarApp() {
   }, []);
 
   return (
-    <nav className="sticky top-0 left-0 h-12.5 bg-amber-300">
+    <nav className="sticky top-0 z-50 w-full  bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100">
       {isMobileView ? <MobileNavbar /> : <DesktopNavbar />}
     </nav>
   );

@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Link, NavLink } from "react-router";
 
@@ -6,11 +7,15 @@ function MobileNavbar() {
 
   return (
     <>
-      <div className="w-full h-full flex justify-between px-3 border-b border-default">
+      <div className="w-full flex justify-between items-center px-5 h-16">
         <Link to={"/"} onClick={() => setOpenNav(false)}>
-          <div className="flex flex-col ">
-            <span className="font-mono font-bold uppercase">Maliwan</span>
-            <span className="font-mono tracking-widest">Alumium & Glass</span>
+          <div className="flex flex-col justify-center ">
+            <span className="font-sans text-2xl font-extrabold tracking-tighter text-neutral-800 leading-none">
+              MALIWAN<span className="text-amber-500">.</span>
+            </span>
+            <span className="font-sans text-[0.65rem] font-medium tracking-[0.25em] text-neutral-500 uppercase mt-1">
+              Aluminium & Glass
+            </span>
           </div>
         </Link>
         <div className="flex items-center">
@@ -39,29 +44,36 @@ function MobileNavbar() {
           </button>
         </div>
       </div>
-      {openNav && (
-        <>
-          <ul className="w-full px-3 py-1 bg-amber-100 flex flex-col justify-center">
-            <OpenNavItem to={"/"} label="Home" setOpenNav={setOpenNav} />
-            <OpenNavItem to={"about"} label="About" setOpenNav={setOpenNav} />
-            <OpenNavItem
-              to={"products"}
-              label="Products"
-              setOpenNav={setOpenNav}
-            />
-            <OpenNavItem
-              to={"projects"}
-              label="projects"
-              setOpenNav={setOpenNav}
-            />
-            <OpenNavItem
-              to={"contact"}
-              label="Contact"
-              setOpenNav={setOpenNav}
-            />
-          </ul>
-        </>
-      )}
+      <AnimatePresence>
+        {openNav && (
+          <>
+            <motion.ul
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="absolute top-full left-0 w-full px-4 py-4 bg-white/95 backdrop-blur-lg shadow-xl border-b border-gray-100 flex flex-col gap-y-1 z-40"
+            >
+              <OpenNavItem to={"/"} label="Home" setOpenNav={setOpenNav} />
+              <OpenNavItem to={"about"} label="About" setOpenNav={setOpenNav} />
+              <OpenNavItem
+                to={"products"}
+                label="Products"
+                setOpenNav={setOpenNav}
+              />
+              <OpenNavItem
+                to={"projects"}
+                label="projects"
+                setOpenNav={setOpenNav}
+              />
+              <OpenNavItem
+                to={"contact"}
+                label="Contact"
+                setOpenNav={setOpenNav}
+              />
+            </motion.ul>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }
@@ -80,8 +92,8 @@ function OpenNavItem({ to, label, setOpenNav }: OpenNavItemProps) {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "flex items-center h-10 rounded-lg w-full px-4  font-semibold font-mono capitalize bg-amber-700 text-white"
-            : "flex items-center h-10 rounded-lg w-full px-4  font-semibold font-mono capitalize hover:bg-amber-200 cursor-pointer"
+            ? "flex items-center h-10 rounded-lg w-full px-4 font-semibold font-sans capitalize bg-amber-50 text-amber-600 transition-colors duration-200"
+            : "flex items-center h-10 rounded-lg w-full px-4 font-medium font-sans text-neutral-500 capitalize hover:bg-neutral-50 hover:text-neutral-900 transition-colors duration-200 cursor-pointer"
         }
         onClick={() => setOpenNav(false)}
         to={to}

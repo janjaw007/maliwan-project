@@ -1,12 +1,16 @@
 import { Link, NavLink } from "react-router";
-
+import { motion } from "framer-motion";
 function DesktopNavbar() {
   return (
-    <div className="flex justify-between items-center px-3 max-w-[1200px] m-auto">
+    <div className="flex justify-between items-center px-5 h-16  max-w-[1200px] m-auto">
       <Link to={"/"}>
-        <div className="flex flex-col ">
-          <span className="font-mono font-bold uppercase">Maliwan</span>
-          <span className="font-mono tracking-widest">Alumium & Glass</span>
+        <div className="flex flex-col justify-center">
+          <span className="font-sans text-2xl font-extrabold tracking-tighter text-neutral-800 leading-none">
+            MALIWAN<span className="text-amber-500">.</span>
+          </span>
+          <span className="font-sans text-[0.65rem] font-medium tracking-[0.25em] text-neutral-500 uppercase mt-1">
+            Aluminium & Glass
+          </span>
         </div>
       </Link>
       <div>
@@ -30,16 +34,30 @@ type NavItemProps = {
 };
 function NavItem({ to, label }: NavItemProps) {
   return (
-    <li>
+    <li className="relative">
       <NavLink
-        className={({ isActive }) =>
-          isActive
-            ? "capitalize font-semibold p-2 rounded bg-amber-500 text-white"
-            : "capitalize font-semibold"
-        }
         to={to}
+        className={({ isActive }) =>
+          `relative px-4 py-2 capitalize font-semibold transition-colors duration-300 ${
+            isActive
+              ? "text-amber-600"
+              : "text-neutral-500 hover:text-amber-600"
+          }`
+        }
       >
-        {label}
+        {({ isActive }) => (
+          <>
+            <span>{label}</span>
+
+            {isActive && (
+              <motion.div
+                layoutId="nav-underline"
+                className="absolute bottom-0 left-2 right-2 h-[2px] bg-amber-500 rounded-full"
+                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+              />
+            )}
+          </>
+        )}
       </NavLink>
     </li>
   );
