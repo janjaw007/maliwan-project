@@ -6,7 +6,7 @@ function HeroSection() {
     <div className="relative w-full h-[calc(100dvh-4rem)] bg-[url('/img/img-1.jpg')] bg-cover bg-center">
       <div className="absolute inset-0 bg-black/40 bg-gradient-to-r from-black/60 to-transparent" />
 
-      <div className="relative max-w-[1160px] h-full m-auto px-6 flex flex-col justify-center items-center lg:items-start z-10">
+      <div className="relative max-w-300 h-full m-auto px-6 flex flex-col justify-center items-center lg:items-start z-10">
         <div className="text-center md:text-left text-white mb-10">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
